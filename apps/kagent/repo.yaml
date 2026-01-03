@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: kmcp-repo
-  namespace: flux-system
+  namespace: kagent
 spec:
   interval: 1h
   type: oci
@@ -13,7 +13,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: kagent-repo
-  namespace: flux-system
+  namespace: kagent
 spec:
   interval: 1h
   type: oci
