@@ -176,7 +176,7 @@ spec:
     # https://kagent.dev/docs/getting-started/configuring-providers
 
     providers:
-      default: openAI
+      default: ollama
       openAI:
         provider: OpenAI
         model: "gpt-4.1-mini"
