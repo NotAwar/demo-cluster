@@ -9,14 +9,13 @@ spec:
   chart:
     spec:
       chart: kagent
-      version: 0.7.7
+      version: 1.0.0
       sourceRef:
         kind: HelmRepository
         name: kagent-repo
         namespace: flux-system
   values:
-    # Default values for kagent
-
+    # Modified values for kagent
     # ==============================================================================
     # GLOBAL CONFIGURATION
     # ==============================================================================
