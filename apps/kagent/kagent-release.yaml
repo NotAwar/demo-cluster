@@ -13,7 +13,7 @@ spec:
       sourceRef:
         kind: OCIRepository
         name: kagent-repo
-        namespace: kagent
+        namespace: flux-system
   values:
     # Modified values for kagent
     # ==============================================================================
