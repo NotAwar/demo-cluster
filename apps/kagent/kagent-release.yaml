@@ -32,7 +32,7 @@ spec:
 
     # -- Override the namespace
     # @default -- `.Release.Namespace`
-    namespaceOverride: "kagent"
+    namespaceOverride: ""
 
     podAnnotations: {}
 
