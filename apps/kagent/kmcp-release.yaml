@@ -11,6 +11,6 @@ spec:
       chart: kmcp
       version: 1.0.0
       sourceRef:
-        kind: OCIRepository
+        kind: HelmRepository
         name: kmcp-repo
         namespace: flux-system
