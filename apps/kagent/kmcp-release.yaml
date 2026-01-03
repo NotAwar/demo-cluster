@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: kmcp
+      chart: kmcp/helm
       version: 1.0.0
       sourceRef:
         kind: HelmRepository
