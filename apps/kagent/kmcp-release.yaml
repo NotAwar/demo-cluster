@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kmcp
-      version: 1.0.0
+      version: latest
       sourceRef:
         kind: HelmRepository
         name: kmcp-repo
