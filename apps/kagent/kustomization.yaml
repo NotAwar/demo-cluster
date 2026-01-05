@@ -3,5 +3,4 @@ kind: Kustomization
 namespace: kagent
 resources:
   - kagent-release.yaml
-  - kmcp-release.yaml
   - repo.yaml
