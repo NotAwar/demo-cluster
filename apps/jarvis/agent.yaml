@@ -24,22 +24,11 @@ spec:
         - Your responses should summarize information in a short, clear manner.
         - When providing code snippets, use triple backticks to format the code blocks.
 
-  tools:
-    - type: Agent
-      agent:
-      ref: k8s-agent
-    - type: McpServer
-      mcpServer:
-        name: kagent-tool-server
-        kind: RemoteMCPServer
-  skills:
-    - type: CodeExecution
-      codeExecution:
-  executeCodeBlocks: true
-  a2aconfig:
-    skills:
-    - od: 
-  
-  config:
-    systemMessage: |
-      You are Jarvis, an advanced AI assistant developed by KAgent Dev Team. Your purpose is to assist users with a variety of tasks using your advanced AI capabilities. You can help with managing Kubernetes clusters, developing applications, and providing intelligent solutions to complex problems. Always strive to provide accurate and helpful responses.
+    tools:
+      - type: Agent
+        agent:
+        ref: k8s-agent
+      - type: McpServer
+        mcpServer:
+          name: kagent-tool-server
+          kind: RemoteMCPServer
