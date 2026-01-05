@@ -1,7 +1,7 @@
 apiVersion: kagent.dev/v1alpha2
 kind: ModelConfig
 metadata:
-  name: ollama-gemma
+  name: model-ollama-gemma
   namespace: kagent
 spec:
   # Provider set to ollama
