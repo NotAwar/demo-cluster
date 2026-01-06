@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - deploy.yaml
   - svc.yaml
-  
+  - namespace.yaml
