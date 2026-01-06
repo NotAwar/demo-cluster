@@ -8,4 +8,4 @@ spec:
   provider: Ollama
   model: gemma
   ollama:
-    host: http://localhost:11434
+    host: http://ollama.ollama.svc.cluster.local
