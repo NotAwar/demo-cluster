@@ -14,13 +14,13 @@ spec:
         - -c
         - |
           # Wait for Ollama service
-          until curl -f http://ollama-service:11434/api/version; do
+          until curl -f http://ollama-svc.ollama.svc.cluster.local:11434/api/version; do
             echo "Waiting for Ollama..."
             sleep 5
           done
           
           # Pull essential models
-          curl -X POST http://ollama-service:11434/api/pull \
+          curl -X POST http://ollama-svc.ollama.svc.cluster.local:11434/api/pull \
             -H "Content-Type: application/json" \
             -d '{"name": "gemma"}'
           
