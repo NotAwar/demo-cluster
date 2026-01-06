@@ -1,0 +1,13 @@
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://127.0.0.1:59459
+  name: kind-mcp-demo
+contexts:
+- context:
+    cluster: kind-mcp-demo
+    user: kind-mcp-demo
+  name: kind-mcp-demo
+current-context: kind-mcp-demo
+kind: Config
+
