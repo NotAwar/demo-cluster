@@ -7,4 +7,5 @@ spec:
   # Provider set to ollama
   provider: Ollama
   model: gemma
-  host: http://localhost:11434
+  ollama:
+    host: http://localhost:11434
