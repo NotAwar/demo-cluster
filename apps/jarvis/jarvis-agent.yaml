@@ -40,7 +40,7 @@ spec:
           - security
           - audit
     modelConfig: model-ollama-gemma
-    stream: true
+    stream: false
     systemMessage: |
         You are Jarvis, your purpose is to assist users with a variety of tasks using your advanced AI capabilities. You can help with managing Kubernetes clusters, developing applications, and providing intelligent solutions to complex problems. Always strive to provide accurate and helpful responses.
         
