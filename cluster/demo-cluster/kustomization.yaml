@@ -7,4 +7,4 @@ resources:
   - kagent
   - jarvis
   - ollama
-  - cert-maanger
+  - cert-manager
