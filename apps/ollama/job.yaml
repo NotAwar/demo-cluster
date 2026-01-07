@@ -22,7 +22,7 @@ spec:
           # Pull essential models
           curl -X POST http://ollama-svc.ollama.svc.cluster.local:11434/api/pull \
             -H "Content-Type: application/json" \
-            -d '{"name": "gemma"}'
+            -d '{"name": "gemma3:1b"}'
           
       restartPolicy: Never
   backoffLimit: 3

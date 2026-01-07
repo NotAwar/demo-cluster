@@ -7,3 +7,4 @@ resources:
   - svc.yaml
   - namespace.yaml
   - job.yaml
+  - volume.yaml
