@@ -6,6 +6,6 @@ metadata:
 spec:
   # Provider set to ollama
   provider: Ollama
-  model: gemma
+  model: "gemma3:1b"
   ollama:
     host: http://ollama-svc.ollama.svc.cluster.local:11434
