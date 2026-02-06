@@ -8,3 +8,5 @@ resources:
   - jarvis
   - ollama
   - cert-manager
+  - jarvis-online
+  - demo-agent
