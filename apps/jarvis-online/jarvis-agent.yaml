@@ -1,0 +1,139 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: kagent
+    app.kubernetes.io/managed-by: kagent
+    app.kubernetes.io/name: jarvis-online-agent
+    app.kubernetes.io/part-of: kagent
+    kagent: jarvis-online-agent
+    pod-template-hash: bc695f896
+  name: jarvis-online-agent
+  namespace: kagent
+spec:
+  containers:
+  - args:
+    - --host
+    - 0.0.0.0
+    - --port
+    - "8080"
+    - --filepath
+    - /config
+    env:
+    - name: OLLAMA_API_BASE
+      value: host.docker.internal:11434
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: http://host.docker.internal:4317
+    - name: OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
+      value: http://host.docker.internal:4317
+    - name: OTEL_EXPORTER_OTLP_LOGS_INSECURE
+      value: "true"
+    - name: OTEL_EXPORTER_OTLP_LOGS_TIMEOUT
+      value: "15"
+    - name: OTEL_EXPORTER_OTLP_TRACES_INSECURE
+      value: "true"
+    - name: OTEL_EXPORTER_OTLP_TRACES_TIMEOUT
+      value: "15"
+    - name: OTEL_LOGGING_ENABLED
+      value: "false"
+    - name: OTEL_TRACING_ENABLED
+      value: "false"
+    - name: OTEL_TRACING_EXPORTER_OTLP_ENDPOINT
+      value: http://host.docker.internal:4317
+    - name: KAGENT_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KAGENT_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.serviceAccountName
+    - name: KAGENT_URL
+      value: http://kagent-controller.kagent:8083
+    image: cr.kagent.dev/kagent-dev/kagent/app:0.7.7
+    imagePullPolicy: IfNotPresent
+    name: kagent
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /health
+        port: http
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 15
+      successThreshold: 1
+      timeoutSeconds: 15
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 256Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: config
+    - mountPath: /var/run/secrets/tokens
+      name: kagent-token
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-l6n76
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: mcp-demo-control-plane
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: k8s-agent
+  serviceAccountName: k8s-agent
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: config
+    secret:
+      defaultMode: 420
+      secretName: k8s-agent
+  - name: kagent-token
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          audience: kagent
+          expirationSeconds: 3600
+          path: kagent-token
+  - name: kube-api-access-l6n76
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace

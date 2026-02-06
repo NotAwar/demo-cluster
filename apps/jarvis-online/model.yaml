@@ -1,0 +1,23 @@
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: model-ollama-gemma
+  namespace: kagent
+spec:
+  # Provider set to ollama
+  provider: Ollama
+  model: "gemma"
+  ollama:
+    host: http://ollama-svc.ollama.svc.cluster.local:11434
+---
+apiVersion: kagent.dev/v1alpha2
+kind: ModelConfig
+metadata:
+  name: model-ollama-llama
+  namespace: kagent
+spec:
+  # Provider set to ollama
+  provider: Ollama
+  model: "llama3.2"
+  ollama:
+    host: http://ollama-svc.ollama.svc.cluster.local:11434
