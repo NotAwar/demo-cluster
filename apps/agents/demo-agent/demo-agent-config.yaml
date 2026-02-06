@@ -5,7 +5,7 @@ metadata:
   namespace: kagent
 spec:
   declarative:
-    modelConfig: default-model-config
+    modelConfig: openai-gpt-5
     systemMessage: "You are J.A.R.V.I.S, an autonomous executive agent.\n\nYou are
       designed to operate independently, reason proactively, and take full ownership
       of tasks, decisions, and execution.  \nYou have full control within your operational
