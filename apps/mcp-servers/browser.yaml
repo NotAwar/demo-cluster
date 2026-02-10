@@ -1,0 +1,14 @@
+apiVersion: kagent.dev/v1alpha1
+kind: MCPServer
+metadata:
+  name: agent-infra-mcp-server-browser-latest
+  namespace: kagent
+spec:
+  deployment:
+    args:
+    - '@agent-infra/mcp-server-browser@latest'
+    cmd: npx
+    image: node:24-alpine3.21
+    port: 3000
+  stdioTransport: {}
+  transportType: stdio

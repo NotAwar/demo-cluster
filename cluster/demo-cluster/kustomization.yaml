@@ -3,9 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - flux-system
-  - kagent
-  - agents
-  - ollama
-  - cert-manager
-  - models
+- flux-system
+- kagent
+- agents
+- ollama
+- cert-manager
+- models
+- mcp-servers
+- kyverno

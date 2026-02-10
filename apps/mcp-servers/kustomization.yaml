@@ -3,4 +3,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - local-mcp.yaml
+- web.yaml
+- browser.yaml
+- local-files.yaml
+- fetch.yaml
+- everything.yaml
+- github-remote.yaml
