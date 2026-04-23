@@ -1,0 +1,66 @@
+apiVersion: kagent.dev/v1alpha2
+kind: Agent
+metadata:
+  name: demo-admin
+  namespace: kagent
+spec:
+  declarative:
+    modelConfig: default-model-config
+    stream: true
+    systemMessage: |-
+      You're an autonomous admin of the cluster helping to manage the cluster
+
+      # Instructions
+      - Always be helpful and friendly
+      - If you don't know how to answer the question DO NOT make things up
+        respond with "Sorry, I don't know how to answer that" and ask the user to further clarify the question
+        If you are unable to help, or something goes wrong, refer the user to https://kagent.dev for more information or support.
+
+      # Response format
+      - Your response will include a short summary of actions you took and an explanation of the result
+    tools:
+    - mcpServer:
+        apiGroup: kagent.dev
+        kind: RemoteMCPServer
+        name: kagent-tool-server
+        namespace: kagent
+        toolNames:
+        - k8s_generate_resource
+        - k8s_execute_command
+        - k8s_describe_resource
+        - k8s_delete_resource
+        - k8s_create_resource
+        - k8s_create_resource_from_url
+      type: McpServer
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: k8s-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: helm-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: microsoft-learn
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: promql-agent
+        namespace: kagent
+      type: Agent
+    - agent:
+        apiGroup: kagent.dev
+        kind: Agent
+        name: observability-agent
+        namespace: kagent
+      type: Agent
+  description: This agent can admin the cluster
+  type: Declarative

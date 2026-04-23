@@ -1,0 +1,12 @@
+apiVersion: kagent.dev/v1alpha2
+kind: RemoteMCPServer
+metadata:
+  name: microsoft-learn
+  namespace: kagent
+spec:
+  description: "Microsoft Learn Documentation MCP Server"
+  protocol: STREAMABLE_HTTP
+  sseReadTimeout: 5m0s
+  terminateOnClose: true
+  timeout: 5s
+  url: https://learn.microsoft.com/api/mcp

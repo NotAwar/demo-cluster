@@ -1,6 +1,6 @@
 # Self-hosted demo cluster
 
-This kubernetes cluster is intended to demonstrate some self-hosting capabilities in kubernetes.
+This kubernetes cluster is intended to demonstate some self-hosting capabilities in kubernetes.
 For convenience, the setup includes services like flux operator to simplify deployment of applications.
 The initial setup is primarily intended for local demo and testing of kagent using Ollama locally in a kind cluster.
 With that being the case, some security best practices may be relaxed for convenience, such as using self-signed certificates.
